@@ -12,14 +12,22 @@
 #include<vector>
 using namespace std;
 
-
 int main()
 {
+    ofstream fout("txt");
+    if (!fout)
+    {
+        cout << "no data" << endl;
+        return -1;
+    }
+    fout << "Learning C++ programming is fun!";    
+
     ifstream file("txt");
     if (!file) {
         cout << "no data" << endl;
         return -1;
     }
+    fout.close();
 
     vector<string> vec;
     string line;
@@ -31,8 +39,10 @@ int main()
         string word;
         istringstream iss(s);
         while(iss >> word){
-            cout << word << endl;
-        }
+            cout << word << " ";
+        } 
     }
+    cout << endl;
+    file.close();
     return 0;
 }
